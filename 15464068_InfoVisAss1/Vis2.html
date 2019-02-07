@@ -1,0 +1,231 @@
+<html>
+<head>
+    <title> Viacheslav Borodin - Question 2</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.10/vega.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.1.2/vega-lite.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"></script>
+   <style>
+       body {
+             font-family: sans-serif;
+           }
+    
+           .vega-actions a {
+             padding: 0.2em;
+           }
+    </style>
+</head>
+<body>
+    <table style="width: 850px; margin-left: auto; margin-right: auto;" cellspacing="5" cellpadding="5">
+    <tbody>
+    <tr>
+    <td style="width: 200px; vertical-align: top;"><strong>Name:&nbsp;</strong></td>
+    <td style="vertical-align: top;">Viacheslav Borodin</td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Student Number:</strong></td>
+    <td style="vertical-align: top;">15464068</td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
+    <td style="vertical-align: top;">
+    <p><a href="https://data.gov.ie/dataset/2016-make-model-year-failures-at-nct">NCT dataset from 2016</a>.</p>
+    <p>This data set includes the information that The Road Safety Authority (RSA) has provided. The following information relating to vehicle makes and models tested by the National Car Testing Service in 2016. Please note that this information does not take into account factors such as mileage, maintenance or service history. It does not provide an interpretation of NCT statistics and the RSA does not accept any liability or duty of care to any person in respect to the information contained in the report, nor is it responsible for any interpretation or analysis of this data by individuals or organisations.</p>
+    </td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Initial questions</strong></td>
+    <td style="vertical-align: top;">I picked three common fail items that occur the most during NCT checks proven by research from the most common fail items from the year of 2016 that we had dataset for. My three chosen fail items were "Suspension" , "Lighting and Electrical" , "LightTest". I wanted to see what the relationship of the year of the birth of the car was versus each of these common fail items. How do these common fail items vary across the year of the car ?  What is the relationship between the year of the car with (i) Lighting and Electrical (ii) Suspension Test (iii) Lighttest ? Is lighting and Electrical the highest fail factor as everyone thinks it is ?</td>
+    </tr>
+    </tbody>
+    </table>
+    <hr />
+    <div align="center"><b> Lighting and Electrical Problems, Suspension test, Light test vs YearOfBirth</b><br/><br/></div>
+  <div id="vis" align="center"></div>
+  <script type="text/javascript">
+    var yourVlSpec =  {
+ "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+ "data": {
+ "url":
+"https://raw.githubusercontent.com/Slavaborodin/info/master/Make%20Model%20Data%202016.csv",
+ "format": {
+ "type": "csv"
+    }
+ },
+
+
+"transform" : [
+    {
+        "filter":"datum.YearOfBirth > 1950"
+    }
+],
+
+
+"title":{
+     "text": "Lighting and Electrical Problems, Suspension test, Light test vs YearOfBirth",
+     "anchor" : "middle"
+ },
+
+
+ "width": 500,
+ "height": 500,
+
+
+ 
+"hconcat" : [
+  
+    {
+ "mark":"circle",
+  "encoding": {
+    "y": {
+      "field": "Lighting and Electrical",
+      "aggregate":"average",
+      "type": "quantitative",
+       "axis": {
+          "title": "Average fail % of lighting and Electrical"
+        },
+      "scale": {
+        "zero": false
+      }
+    },
+
+
+
+
+    "x": {
+      "field": "YearOfBirth" ,
+      "type": "quantitative",
+      "stack": "null",
+      
+      "scale": {
+        "zero": false
+      },
+       "axis": {
+        "grid": false
+      }
+    },
+
+  "color": {
+      
+      "field": "YearOfBirth",
+      "value":"DarkSlateBlue",
+      "type": "quantitative"
+    }
+    
+    }
+
+
+    },
+
+
+        {
+ "mark":"circle",
+  "encoding": {
+    "y": {
+      "field": "Suspension Test",
+      "aggregate":"average",
+      "type": "quantitative",
+      "axis": {
+          "title": "Average fail % of Suspension Tests"
+        },
+      "scale": {
+        "zero": false
+      }
+    },
+
+
+
+    "x": {
+      "field": "YearOfBirth" ,
+      "type": "quantitative",
+      "stack": "zero",
+      "scale": {
+        "zero": false
+      },
+       "axis": {
+        "grid": false
+      }
+    },
+     "color": {
+      
+      "field": "YearOfBirth",
+      "value":"DarkSlateBlue",
+      "type": "quantitative"
+    }
+    }
+    },
+     {
+ "mark":"circle",
+  "encoding": {
+    "y": {
+      "field": "Light test",
+      "aggregate":"average",
+      "type": "quantitative",
+      "axis": {
+          "title": "Average fail % of Light Tests"
+        },
+      "scale": {
+        "zero": false
+      }
+    },
+
+  
+
+    "x": {
+      "field": "YearOfBirth" ,
+      "type": "quantitative",
+      "stack": "zero",
+      "scale": {
+        "zero": false
+      },
+       "axis": {
+        "grid": false
+      }
+    },
+     "color": {
+      
+      "field": "YearOfBirth",
+      "value":"DarkSlateBlue",
+      "type": "quantitative"
+    }
+    }
+    }
+    
+  ]
+
+
+
+  
+    
+
+
+  
+     
+
+ }
+
+        vegaEmbed("#vis", yourVlSpec);
+  </script>
+    <hr />
+<table style="width: 850px; margin-left: auto; margin-right: auto;" cellspacing="5" cellpadding="5">
+<tbody>
+<tr>
+<td style="width: 200px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+<td style="vertical-align: top;">These three circle charts show the relationship between the age of the car versus (i)- Lighting and Electrical Average % fail rate , (ii)- Suspension Test Average % fail rate , (iii)- Light Test % fail rate</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><strong>Insight:</strong></td>
+<td style="vertical-align: top;"> The three charts are very different and represent different fail rates. As we can see all three charts follow similar patterns where  they are all at values below 10 on the y axis and then they shoot up when they hit the 1900's this is because cars below 1900 are rarer to find and are less common on the roads now. The graph begins to peak at the 1900 as these cars are still on the roads and there are many more of them in comparison to cars that are older. All three graphs peak at 2005 as these were cars which were 11 years old at the time and they were still quite common on the roads even from personal experience. We can see that the graphs fall down to a low point again when they are less than 6 years old as these cars are quite new and probably don't have as many issues as cars that are 10 or more years older. All three charts show us that cars from 2005 have the highest fail rate in these categories. td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><strong>Design considerations</strong></td>
+<td style="vertical-align: top;"><p> I have used three circle charts as it is an easy way to show quantitative information and the relationships between the two different variables. I have sorted the cars by YearOfBirth along the x axis with the average % fail rate in each of the three categories I have chosen along the Y axis. From my three charts it is evident where the peaks rise and which years have the highest fail rates in each category. If you hover over any of the circles it will show you the percentage that failed in that year in each category. The circles look a bit clustered for years less than 1900 as there were only 1 or 2 cars in total during those years meaning the fail rate was very low and clustered. The graphs suffer from overplotting which means many points are drawn on top of each other because the values for older cars are lower and are less common than the newer cars which have larger datasets. But in cars from 1900 onwards there were more of them which means that the % of the fail rate will increase and will be distributed in a nicer way. The reason my graph looks so clustered is because I haven't filtered out any years and in the earlier years the test sample is smaller meaning that the fail rate is smaller. I also researched online the most common fail rates for the year 2016. An alternative way of demonstrating this data would be throught the use of a bar chart, box plot or even a histogram. If I was to use these charts I could bin the graphs to get rid of the overplotting but it would defeat the purpose of the visualisations I wish to show. I have used a lighter colour for years that are older as they dont really influence the dataset as much as the total of them is much lower so I set them to a lighter colour to make the graph neater looking. A limitation in using this type of graph is that it is hard to read the data unless the point is hovered over. After my visualisations I found that all three charts had similar enough trends for all three charts 2005 had the highest fail rate amongst the three categories. So to answer my initial question how do these fail items vary across the year of birth : the fail % are pretty much the same for all the years across all the three categories. Lighting and Electrical is the highest fail factor as discussed and advertised by most garages.
+</p> <a href = " https://www.ncts.ie/1127"> 
+<p>The statistics I found on the official NCT website reflect my datasets as it states that cars which are 2012 have an 83% pass rate hence why on my graphs the circle is close enough to the x axis as the fail rate is pretty low. In comparison with cars with a reg of 2005 there is only a 37% overall pass rate and in my graphs the highest failing year was 2005 which again reflects the statistics. The main fail items were tyres, front suspension, lights,brake lines and stop lamps. In our dataset we only had suspension and Lights so I choose Electrical too.</p></td></tr>
+<tr>
+<td style="width: 200px; vertical-align: top;"><strong>Data filtering and transformation:&nbsp;</strong></td>
+<td style="vertical-align: top;">The only data that I have filtered is cars that are over the year 1950 as when I analysed the dataset provided to us I realised that there were very little cars below 1950 so I didn't see a point in including them as it was mostly 1 or 2 cars per year meaning that the % fail rate would be very close to the X axis. </a>. </td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

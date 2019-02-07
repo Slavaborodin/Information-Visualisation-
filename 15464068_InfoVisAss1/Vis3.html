@@ -1,0 +1,173 @@
+<html>
+<head>
+    <title> Viacheslav Borodin - Question 3</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.8/vega.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.0.3/vega-lite.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"></script>
+   <style>
+       body {
+             font-family: sans-serif;
+           }
+    
+           .vega-actions a {
+             padding: 0.2em;
+           }
+    </style>
+</head>
+<body>
+    <table style="width: 850px; margin-left: auto; margin-right: auto;" cellspacing="5" cellpadding="5">
+    <tbody>
+    <tr>
+    <td style="width: 200px; vertical-align: top;"><strong>Name:&nbsp;</strong></td>
+    <td style="vertical-align: top;">Viacheslav Borodin</td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Student Number:</strong></td>
+    <td style="vertical-align: top;">15464068</td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
+    <td style="vertical-align: top;">
+    <p><a href="https://data.gov.ie/dataset/2016-make-model-year-failures-at-nct">NCT dataset from 2016</a>.</p>
+    <p>This data set includes the information that The Road Safety Authority (RSA) has provided. The following information relating to vehicle makes and models tested by the National Car Testing Service in 2016. Please note that this information does not take into account factors such as mileage, maintenance or service history. It does not provide an interpretation of NCT statistics and the RSA does not accept any liability or duty of care to any person in respect to the information contained in the report, nor is it responsible for any interpretation or analysis of this data by individuals or organisations.</p>
+    </td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Initial questions</strong></td>
+    <td style="vertical-align: top;">How do the most popular cars by peoples opinions vary across the pass and fail rates ? What is the relationship between the most common vehichles on the road versus the pass and fail rates ? Are the most expensive cars available on the market guaranteed a pass when doing the NCT? </td>
+    </tr>
+    </tbody>
+    </table>
+    <hr />
+    <div align="center"><b> Relationship between most popular cars and NCT performance </b></div>
+    <br/>
+  <div id="vis" align="center"></div><br/>
+    <hr />
+<table style="width: 850px; margin-left: auto; margin-right: auto;" cellspacing="5" cellpadding="5">
+<tbody>
+<tr>
+<td style="width: 200px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+<td style="vertical-align: top;"> I have used two scatter plots to show the representation of the most popular car make models against two graphs. One was the most popular cars versus the pass rate of that make. The other was the most popular cars versus the fail rate of that make.</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><strong>Insight:</strong></td>
+<td style="vertical-align: top;"> I selected the most common and popular cars that are found on Irish roads from a day to day basis.To do this I analysed the dataset provided to us and figured that the cars with more than 500 entries were proven to be the most popular as some VehichleMakes had less than 100 vehichles and I thought there wasn't too much point to include them as they would just overplot our dataset. The chart on the left shows the average pass rates for the most popular vehichles in our dataset. The most popular vehichles are the ones that have over 500 entries in the dataset. Both the charts show the percentage of the pass rate for each make. Then the chart on the right contradicts this by showing the fail rate of each make. So in general my graph demonstrates the pass and fail rates of each make that has over 500 entries in the dataset. From our pass chart we can see that cars which are made in Asia such as Kia,Toyota,Lexus,Suzuki have a higher pass rate than cars which are made in Europe or the US. Asian cars are known to be cheaper, lighter and cheaper to run in terms of costs of maintenance. While the European cars are more expensive to run. After further analysation of this data it is easy to note that in terms of the NCT the most reliable car for passing was Kia, followed by Lexus. Again this result reflects the real life world as these are two very popular cars that can be found on Irish roads. The most expensive cars such as Audi,BMW,Mercedes,Volkswagen are not guaranteed passes during the NCT with the graph showing these cars have the pass % as follows 48.96%, 48.84%, 51.59%, 48.76% meaning that these cars are only guaranteed an almost 50% or less pass rate. So the graph answers my initial questions the most popular cars on the Irish market have a higher pass rate than cars we are less likely to find on the roads due to a smaller dataset more than likely. The most expensive don't guarantee anything , this just means that road users are paying for luxury when investing in high priced cars. </td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><strong>Design considerations</strong></td>
+<td style="vertical-align: top;"> I have used two scatter plots to demomstrate my data visualisations. I believe using a scatter plot to demonstrate the relationship between a quantitative variable and an ordinal variable is effective and easy to understand. By using the X axis for Vehichlemake and I grouped this data using ordinal type variable. I then used the Y axis for the percentage of the pass and fail rates as a quantitative variable. I used a scatter plot to represent this visualisation because the makes of the cars are nicely spread out and each car has different pass/fail rates. The graph doesn't suffer from any clustering or overplotting as the values for each fluctuate amongst each other causing an almost zig zag form of a graph. A limitation of this plot is that the graph is a bit hard to read unless you hover over the specific car make which will then show you the % fail rate or % pass rate. It is impossible to tell the exact % of the pass or fail rate unless you hover over the points. But there is a trend in the graph that Asian cars seem to have a higher pass rate than other manufacturers. 
+  Alternative visualisations which I could have used would have been a box plot which would be easy to read off the mean, median and interquartile ranges of the pass and fail rates of each car make. I could have also used a histogram or bar chart to demonstrate each make verus the percentage which could have been easier to read off. My dataset for this is too small to use histograms or box plots as I am filtering out the cars that have more than 500 entries.
+</td> </tr>
+<tr>
+<td style="width: 200px; vertical-align: top;"><strong>Data filtering and transformation:&nbsp;</strong></td>
+<td style="vertical-align: top;">I have filtered out the most popular cars from our dataset as these are the type of the cars we regularly see on our roads. The cars in this dataset that have less than 500 entries are rarer to find in Ireland hence why I have disabled them from my visualisation. Most of the cars in my visualisations are the ones driven in Ireland and some of them are considered the up market cars in which people believe when they spend more money they will get better quality results however my visualisations contradict these opinions. So I filtered out the cars with less than 500 entries as these have small datasets and are not useful to compare as they will cause an overplotting meaning data will be harder to read off. </td>
+</tr>
+</tbody>
+</table>
+  <script type="text/javascript">
+    var yourVlSpec = {
+ "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+ "data": {
+ "url":
+"https://raw.githubusercontent.com/Slavaborodin/info/master/Make%20Model%20Data%202016.csv",
+ "format": {
+ "type": "csv"
+    }
+ },
+
+"transform" : [
+    {
+        "filter":"datum.Total > 500"
+    }
+],
+
+
+"title":{
+    "text":"Relationship between most popular cars and NCT performance"
+},
+
+
+"width": 500,
+"height": 500,
+
+"hconcat" : [
+    {
+"mark" :"point",
+    "encoding":{
+        "y" :{
+            "field" : "PASS %",
+            "aggregate":"mean",
+      "type": "quantitative",
+       "axis": {
+        "grid": false
+      },
+      "scale": {
+        "zero": false
+      }
+    },
+
+"x": {
+      "field": "VehicleMake",
+      "type": "ordinal",
+      "scale": {
+        "zero": false
+      },
+      "axis": {
+        "grid": false
+      }
+    }
+    }
+    },
+
+
+   
+    
+    
+
+
+     {
+ "mark" :"point",
+    "encoding":{
+        "y" :{
+            "field" : "FAIL %",
+            "aggregate":"mean",
+      "type": "quantitative",
+       "axis": {
+        "grid": false
+      },
+      "scale": {
+        "zero": false
+      }
+    },
+
+"x": {
+      "field": "VehicleMake",
+      "type": "ordinal",
+      "scale": {
+        "zero": false
+      },
+      "axis": {
+        "grid": false
+      }
+    }
+    },
+    "color": {
+      
+      "field": "Model",
+      "value":"DarkSlateBlue",
+      "type": "quantitative"
+    }
+    } 
+
+    
+
+
+
+
+  ]
+
+}
+        vegaEmbed("#vis", yourVlSpec);
+  </script>
+</body>
+</html>

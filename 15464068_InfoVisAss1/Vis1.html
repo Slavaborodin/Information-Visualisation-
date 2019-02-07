@@ -1,0 +1,141 @@
+<html>
+<head>
+    <title> Viacheslav Borodin - Assignment 1(i)</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.10/vega.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.1.2/vega-lite.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"></script>
+   <style>
+       body {
+             font-family: sans-serif;
+           }
+    
+           .vega-actions a {
+             padding: 0.2em;
+           }
+    </style>
+</head>
+<body>
+    <table style="width: 850px; margin-left: auto; margin-right: auto;" cellspacing="5" cellpadding="5">
+    <tbody>
+    <tr>
+    <td style="width: 200px; vertical-align: top;"><strong>Name:&nbsp;</strong></td>
+    <td style="vertical-align: top;">Viacheslav Borodin</td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Student Number:</strong></td>
+    <td style="vertical-align: top;">15464068</td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
+    <td style="vertical-align: top;">
+    <p><a href="https://data.gov.ie/dataset/2016-make-model-year-failures-at-nct">NCT Dataset from 2016</a>.</p>
+    <p>This data set includes the information that The Road Safety Authority (RSA) has provided. The following information relating to vehicle makes and models tested by the National Car Testing Service in 2016. Please note that this information does not take into account factors such as mileage, maintenance or service history. It does not provide an interpretation of NCT statistics and the RSA does not accept any liability or duty of care to any person in respect to the information contained in the report, nor is it responsible for any interpretation or analysis of this data by individuals or organisations. </p>
+    </td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Initial questions</strong></td>
+    <td style="vertical-align: top;">Do more cars fail based on how old they are , this means more old cars fail ? What is the relationship between the pass rate and the year of the car ?</td>
+    </tr>
+    </tbody>
+    </table>
+    <hr />
+  <div id="vis" align="center"></div>
+  <script type="text/javascript">
+    var yourVlSpec =  {
+ "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+ "data": {
+ "url":
+"https://raw.githubusercontent.com/Slavaborodin/info/master/Make%20Model%20Data%202016.csv",
+ "format": {
+ "type": "csv"
+    }
+ },
+
+"transform" : [
+    {
+        "filter":"datum.YearOfBirth > 1920"
+    }
+    
+    
+    
+
+],
+
+
+
+ "title":{
+     "text": "Year of car vs Pass Rate",
+     "anchor" : "middle"
+ },
+
+ "width": 500,
+  "height": 500,
+
+ 
+
+"mark":"bar",
+  "encoding": {
+    "y": {
+      "field": "PASS %",
+      "aggregate":"average",
+      "type": "quantitative",
+      "scale": {
+        "zero": false
+      }
+    },
+
+
+    "x": {
+      "field": "YearOfBirth" ,
+      "type": "ordinal",
+      "scale": {
+        "zero": false
+      }
+    },
+    "opacity":{"value":0.5},
+
+      "color": {
+      "aggregate":"Total",
+      "type": "quantitative",
+      "scale": {
+        "range": [
+          
+          "#659CCA"
+        ]
+      }
+    }
+    },
+    
+    
+   "config": {
+    "legend": {
+      "orient": "bottom-right"
+    }
+  }
+}
+
+        vegaEmbed("#vis", yourVlSpec);
+  </script>
+    <hr />
+<table style="width: 850px; margin-left: auto; margin-right: auto;" cellspacing="5" cellpadding="5">
+<tbody>
+<tr>
+<td style="width: 200px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+<td style="vertical-align: top;">This bar chart demonstrates the average pass rate vs the year of the car. On the X axis I have the year of the car and on the Y axis I have the average of the pass%. If we hover over a particular bar it will demonstrate to you the average pass rates for that particular year of the car. Otherwise it is easy enough to read off a rough estimate of the value that, that year passed. </td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><strong>Insight:</strong></td>
+<td style="vertical-align: top;">In general we can see that if the car is newer it doesn't necessarily mean it will pass the nct. If we look on the right hand side of the graph we can see as the car gets newer we can see an increase in the pass rate. I have used a filter option to filter out dates that aren't part of the dataset. As we can see on the left hand side of the graph the pass rates are at 100% that is because the total amount of cars for that year was probably only one meaning that they passed causing a 100% success rate. If I was to filter out the total amount of cars greater than 1 I probably wouldn't have found any 100% pass rates. As mentioned above the only reason the graph contains 100% pass rates columns is due to the fact that these datasets contained small samples meaning that if they passed this increased the total %. My idea behind doing this graph was that often people have the opinion that the newer the car the higher the percentage of it passing. However this is not true even from personal experience my car is over 10 years old and it managed to pass first time. So after looking at the graph the newer cars do have a higher percentage pass rate but this is due to the fact that they have been on the roads less, have less miles and haven't had the wear and tear effect lets say cars over 10 years old have had. There is a noticeable dip in the graph for cars that are over 20 years old that is because these cars have higher miles and are still quite noticeable and popular to find on irish roads. The reason the graph has a high percentage of passes on the left hand side is because of the total sample size. So to answer my initital question asked I have noticed that more older cars fail due to the fact of age and them being around more longer.</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><strong>Design considerations</strong></td>
+<td style="vertical-align: top;">I have used a bar chart as I believe the data is best represented this way as it is easy to read the average pass rate of the year of the cars. If we hover over the bars it is easy to read the % of the pass rate for that car year. The bar chart is an effective way to show the relationship between the quantitive variable which is the pass rates versus the ordinal variables which is the year of the cars. I decided to make the year a ordinal variable as it divides the years up nicely and is easier to read off the x axis. The use of a histogram or bar chart in this graph makes it much easier to analyse the data from each of the yearofbirths of the cars as the y axis shows the % and the x axis shows the years. The histogram is easy to read a rough estimation of the % of the pass rate without having to hover over the chart itself. Another design consideration I could have used is the use of a scatterplot, however I think the use of the scatterplot wouldn't make the graph as legible as I have it now. Alternative visualisations I could have considered were a scatterplot or line chart. If I was to use a scatterplot the graph would definitely suffer from overplotting as the cars from around 1994 to around 2003 are near enough in the same % region meaning the graph would look messy. A limitation of this graph is that the years that don't have over 1 entry will always have a 100% pass rate causing the graph to be a bit messy and not neat to read. I should have filtered the total amount of cars so that I wouldn't have this issue. </td>
+</tr>
+<tr>
+<td style="width: 200px; vertical-align: top;"><strong>Data filtering and transformation:&nbsp;</strong></td>
+<td style="vertical-align: top;">I have filtered that only cars over 1920 are shown on the graph</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
